@@ -263,7 +263,7 @@ public class PlaylistFragment
                     @Override
                     public boolean
                     onItemLongClick(AdapterView<?> av, View v, int position, long id) {
-                        // TODO: Pop up rename/delete dialog.
+                        // TODO: Pop up rename/copy/delete dialog.
                         return true;
                     }
                 });
