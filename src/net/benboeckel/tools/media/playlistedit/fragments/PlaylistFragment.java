@@ -27,7 +27,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 
-public class PlaylistFragment extends ListFragment implements TabListener {
+public class PlaylistFragment
+        extends ListFragment
+        implements TabListener {
     private OnItemSelectedListener mListener;
     private ContentResolver mResolver;
     private Map<Category, Cursor> mCursors;
@@ -70,65 +72,8 @@ public class PlaylistFragment extends ListFragment implements TabListener {
      * that it does during the onAttach() callback
      */
     public interface OnItemSelectedListener {
-        public void onItemSelected(int category, int position);
-    }
-
-    @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        // Check that the container activity has implemented the callback interface
-        try {
-            mListener = (OnItemSelectedListener) activity;
-        } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnItemSelectedListener");
-        }
-
-        mResolver = activity.getContentResolver();
-        mCursors = new HashMap<Category, Cursor>();
-    }
-
-    @Override
-    public void
-    onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-
-        View view = getActivity().findViewById(R.id.selection_layout);
-        if (view != null) {
-            mDualFragments = true;
-        }
-
-        ActionBar bar = getActivity().getActionBar();
-        bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-
-        bar.addTab(bar.newTab()
-                .setText(R.string.playlist_tab_label)
-                .setTabListener(this), Category.CAT_PLAYLIST.ordinal());
-        bar.addTab(bar.newTab()
-                .setText(R.string.artist_tab_label)
-                .setTabListener(this), Category.CAT_ARTIST.ordinal());
-        bar.addTab(bar.newTab()
-                .setText(R.string.album_tab_label)
-                .setTabListener(this), Category.CAT_ALBUM.ordinal());
-        bar.addTab(bar.newTab()
-                .setText(R.string.song_tab_label)
-                .setTabListener(this), Category.CAT_SONG.ordinal());
-        bar.addTab(bar.newTab()
-                .setText(R.string.genre_tab_label)
-                .setTabListener(this), Category.CAT_GENRE.ordinal());
-
-        if (savedInstanceState != null) {
-            mCategory = savedInstanceState.getInt(mCategoryState);
-            mListPosition = savedInstanceState.getInt(mListPositionState);
-
-            bar.selectTab(bar.getTabAt(mCategory));
-        }
-
-        populateCategory(mCategory);
-
-        ListView lv = getListView();
-        // Improve scrolling performance.
-        lv.setCacheColorHint(Color.TRANSPARENT);
+        public void
+        onItemSelected(int category, int position);
     }
 
     public void
@@ -326,15 +271,74 @@ public class PlaylistFragment extends ListFragment implements TabListener {
         }
     }
 
-    @Override
     public void
-    onListItemClick(ListView lv, View v, int position, long id) {
+    selectPosition(int position) {
         mListener.onItemSelected(mCategory, position);
         mListPosition = position;
     }
 
+    @Override
     public void
-    selectPosition(int position) {
+    onAttach(Activity activity) {
+        super.onAttach(activity);
+        // Check that the container activity has implemented the callback interface
+        try {
+            mListener = (OnItemSelectedListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnItemSelectedListener");
+        }
+
+        mResolver = activity.getContentResolver();
+        mCursors = new HashMap<Category, Cursor>();
+    }
+
+    @Override
+    public void
+    onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        View view = getActivity().findViewById(R.id.selection_layout);
+        if (view != null) {
+            mDualFragments = true;
+        }
+
+        ActionBar bar = getActivity().getActionBar();
+        bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+        bar.addTab(bar.newTab()
+                .setText(R.string.playlist_tab_label)
+                .setTabListener(this), Category.CAT_PLAYLIST.ordinal());
+        bar.addTab(bar.newTab()
+                .setText(R.string.artist_tab_label)
+                .setTabListener(this), Category.CAT_ARTIST.ordinal());
+        bar.addTab(bar.newTab()
+                .setText(R.string.album_tab_label)
+                .setTabListener(this), Category.CAT_ALBUM.ordinal());
+        bar.addTab(bar.newTab()
+                .setText(R.string.song_tab_label)
+                .setTabListener(this), Category.CAT_SONG.ordinal());
+        bar.addTab(bar.newTab()
+                .setText(R.string.genre_tab_label)
+                .setTabListener(this), Category.CAT_GENRE.ordinal());
+
+        if (savedInstanceState != null) {
+            mCategory = savedInstanceState.getInt(mCategoryState);
+            mListPosition = savedInstanceState.getInt(mListPositionState);
+
+            bar.selectTab(bar.getTabAt(mCategory));
+        }
+
+        populateCategory(mCategory);
+
+        ListView lv = getListView();
+        // Improve scrolling performance.
+        lv.setCacheColorHint(Color.TRANSPARENT);
+    }
+
+    @Override
+    public void
+    onListItemClick(ListView lv, View v, int position, long id) {
         mListener.onItemSelected(mCategory, position);
         mListPosition = position;
     }

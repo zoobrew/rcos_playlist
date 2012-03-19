@@ -5,7 +5,9 @@ import android.os.Bundle;
 
 import net.benboeckel.tools.media.playlistedit.fragments.PlaylistFragment;
 
-public class PlaylistEditActivity extends Activity implements PlaylistFragment.OnItemSelectedListener {
+public class PlaylistEditActivity
+        extends Activity
+        implements PlaylistFragment.OnItemSelectedListener {
     /** Called when the activity is first created. */
     @Override
     public void
