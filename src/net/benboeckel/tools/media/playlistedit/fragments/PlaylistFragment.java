@@ -175,8 +175,7 @@ public class PlaylistFragment
                     Media._ID,
                     Media.TITLE,
                     Media.ALBUM,
-                    Media.ARTIST,
-                    Media.DURATION
+                    Media.ARTIST
             };
             selection = Media.IS_MUSIC + " = 1";
             sortOrder = Media.DEFAULT_SORT_ORDER + " ASC";
@@ -185,14 +184,12 @@ public class PlaylistFragment
             viewColumns = new String[] {
                     Media.TITLE,
                     Media.ALBUM,
-                    Media.ARTIST,
-                    Media.DURATION
+                    Media.ARTIST
             };
             viewIds = new int[] {
                     R.id.song_name,
                     R.id.song_album,
-                    R.id.song_artist,
-                    R.id.song_duration
+                    R.id.song_artist
             };
             break;
         case CAT_GENRE:
