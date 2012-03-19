@@ -241,9 +241,7 @@ public class PlaylistFragment
                     viewIds,
                     0);
 
-            ListView lv = getListView();
-
-            lv.setAdapter(adapter);
+            setListAdapter(adapter);
         }
 
         if (mDualFragments) {
