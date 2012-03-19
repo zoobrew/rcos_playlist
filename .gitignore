@@ -1,0 +1,10 @@
+# Eclipse crap
+.project
+.classpath
+
+# Build directories
+bin/
+gen/
+
+# Local configuration
+local.properties
