@@ -42,7 +42,7 @@ public class PlaylistFragment
     private static final String mCategoryState = "category";
     private static final String mListPositionState = "list_position";
 
-    private static enum Category {
+    public static enum Category {
         CAT_PLAYLIST,
         CAT_ARTIST,
         CAT_ALBUM,
@@ -73,7 +73,7 @@ public class PlaylistFragment
      */
     public interface OnItemSelectedListener {
         public void
-        onItemSelected(int category, int position);
+        onItemSelected(Category category, int position);
     }
 
     public void
@@ -270,7 +270,7 @@ public class PlaylistFragment
 
     public void
     selectPosition(int position) {
-        mListener.onItemSelected(mCategory, position);
+        mListener.onItemSelected(Category.values()[mCategory], position);
         mListPosition = position;
     }
 
@@ -336,7 +336,7 @@ public class PlaylistFragment
     @Override
     public void
     onListItemClick(ListView lv, View v, int position, long id) {
-        mListener.onItemSelected(mCategory, position);
+        mListener.onItemSelected(Category.values()[mCategory], position);
         mListPosition = position;
     }
 

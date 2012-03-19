@@ -19,6 +19,6 @@ public class PlaylistEditActivity
 
     @Override
     public void
-    onItemSelected(int category, int item) {
+    onItemSelected(PlaylistFragment.Category category, int item) {
     }
 }
