@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">PlaylistEdit</string>
+
+    <string name="playlist_tab_label">Playlists</string>
+    <string name="artist_tab_label">Artists</string>
+    <string name="album_tab_label">Albums</string>
+    <string name="song_tab_label">Songs</string>
+    <string name="genre_tab_label">Genres</string>
+
+
+    <string name="label_album_count">albums</string>
+    <string name="label_track_count">tracks</string>
+
+</resources>
