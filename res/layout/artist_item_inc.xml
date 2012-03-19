@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <TextView
+        android:id="@+id/artist_name"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" />
+
+    <TextView
+        android:id="@+id/artist_album_count"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/artist_name" />
+
+    <TextView
+        android:id="@+id/label_album_count"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@+string/label_album_count"
+        android:layout_marginLeft="5dip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/artist_name"
+        android:layout_toRightOf="@+id/artist_album_count" />
+
+    <TextView
+        android:id="@+id/artist_track_count"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/artist_album_count" />
+
+    <TextView
+        android:id="@+id/label_track_count"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@+string/label_track_count"
+        android:layout_marginLeft="5dip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/artist_album_count"
+        android:layout_toRightOf="@+id/artist_track_count" />
+
+</merge>
