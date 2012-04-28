@@ -8,6 +8,7 @@ import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.ActionBar.TabListener;
 import android.app.Activity;
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.app.ListFragment;
 import android.content.ContentResolver;
@@ -350,8 +351,14 @@ public class PlaylistFragment
     @Override
     public void
     onTabSelected(Tab tab, FragmentTransaction ft) {
-        PlaylistFragment fragment = (PlaylistFragment) getFragmentManager()
-                .findFragmentById(R.id.playlist_fragment);
+        FragmentManager fm = getFragmentManager();
+
+        // Why is this needed? It causes NPEs on 4.0.2 (hardware).
+        if (fm == null) {
+            return;
+        }
+
+        PlaylistFragment fragment = (PlaylistFragment) fm.findFragmentById(R.id.playlist_fragment);
         fragment.populateCategory(tab.getPosition());
 
         if (mDualFragments) {
